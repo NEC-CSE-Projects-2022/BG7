@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kidney Disease Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='Upload.css') }}">
+</head>
+<body>
+  <div class="pest-container">
+    <div class="pest-card">
+      <h2 class="pest-title">Single Image Analysis</h2>
+      <label class="custom-file-upload">
+        <input type="file" id="fileInput" accept="image/*" /> Choose File
+      </label>
+      <div id="imagePreview" style="display: none; margin: 15px 0;">
+        <img id="previewImg" style="max-width: 100%; border-radius: 10px;" />
+      </div>
+
+      <button class="predict-btn" id="predictBtn">Predict</button>
+      <a href="/batch" class="predict-btn" style="background:#00509e; text-decoration:none; display:block; margin-top:10px; color:white; text-align:center;">Batch-Wise Upload</a>
+
+      <p id="result" class="prediction-result" style="font-weight: bold; margin-top: 10px;"></p>
+
+      <div id="descriptionBox" style="display:none; text-align:left; margin-top:20px; background:#f9f9f9; padding:15px; border-radius:10px;">
+        <h3 style="color:#00509e;">🩺 Disease Details</h3>
+        <p><strong>Cause:</strong> <span id="cause"></span></p>
+        <p><strong>Treatment:</strong> <span id="treatment"></span></p>
+        <p><strong>Steps:</strong> <span id="steps"></span></p>
+        <p><strong>Diet:</strong> <span id="diet"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const previewImg = document.getElementById("previewImg");
+    const resultText = document.getElementById("result");
+    const descriptionBox = document.getElementById("descriptionBox");
+
+    fileInput.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            previewImg.src = URL.createObjectURL(file);
+            document.getElementById("imagePreview").style.display = "block";
+        }
+    };
+
+    document.getElementById("predictBtn").onclick = async () => {
+      const file = fileInput.files[0];
+      if (!file) return alert("Upload image first!");
+
+      resultText.innerText = "🔍 Analyzing...";
+      const formData = new FormData();
+      formData.append("image", file);
+
+      try {
+        const res = await fetch("/predict", { method: "POST", body: formData });
+        const data = await res.json();
+        
+        resultText.innerText = `Result: ${data.pred_label}`;
+        document.getElementById("cause").textContent = data.description.Cause;
+        document.getElementById("treatment").textContent = data.description.Treatment;
+        document.getElementById("steps").textContent = data.description.Steps_to_Follow || "N/A";
+        document.getElementById("diet").textContent = data.description.Diet;
+        descriptionBox.style.display = "block";
+      } catch (err) { resultText.innerText = "❌ Server Error"; }
+    };
+  </script>
+</body>
+</html>

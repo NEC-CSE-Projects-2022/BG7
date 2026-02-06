@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features - Kidney AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='Navbar.css') }}">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --Very-Dark-Blue: hsl(234, 12%, 34%);
+      --Grayish-Blue: hsl(229, 6%, 66%);
+      --border-color: hsl(0, 0%, 50%);
+      --fw-light: 200;
+      --fw-regular: 400;
+      --fw-bold: 600;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .features-container {
+      width: 90%;
+      margin: 0 auto;
+      padding: 3rem 3rem 0 3rem;
+      text-align: center;
+    }
+
+    .header_subtitle { font-weight: var(--fw-light); font-size: clamp(1.2rem, 4vw, 1.5rem); color: var(--Grayish-Blue); }
+    .header_title { font-size: clamp(2rem, 5vw, 2.5rem); font-weight: var(--fw-bold); margin: 0.5rem 0; color: var(--Very-Dark-Blue); }
+    .header_description { max-width: 500px; margin: 0.5rem auto 2rem; color: var(--Grayish-Blue); }
+
+    .card_grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      border-top: 5px solid var(--border-color);
+      box-shadow: 0 10px 20px rgba(23, 79, 138, 0.1);
+      text-align: left;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+
+    .card_title { font-weight: var(--fw-bold); font-size: 1.2rem; color: var(--Very-Dark-Blue); margin-bottom: 0.8rem; }
+    .card_content { color: var(--Grayish-Blue); margin-bottom: 1rem; font-size: 0.95rem; }
+    .card_img { display: block; margin-left: auto; }
+
+    .cyan { --border-color: hsl(180, 62%, 55%); transform: translateY(50px); }
+    .red { --border-color: hsl(0, 78%, 62%); }
+    .orange { --border-color: hsl(34, 97%, 64%); }
+    .blue { --border-color: hsl(212, 86%, 64%); transform: translateY(50px); }
+
+    @media (max-width: 900px) { .card_grid { grid-template-columns: 1fr 1fr; } .cyan, .blue { transform: translateY(0); } }
+    @media (max-width: 600px) { .card_grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="features-container">
+    <p class="header_subtitle">Accurate Kidney Analysis</p>
+    <h1 class="header_title">AI-Powered Kidney Detection</h1>
+    <p class="header_description">
+      Our deep learning system analyzes kidney CT scans instantly to detect stones, cysts, or other abnormalities,
+      assisting doctors and patients for faster and more accurate diagnosis.
+    </p>
+
+    <div class="card_grid">
+      <section class="card cyan">
+        <h2 class="card_title">High Precision</h2>
+        <p class="card_content">Trained on thousands of kidney CT images, our AI ensures highly accurate classification.</p>
+        <img class="card_img" src="{{ url_for('static', filename='icons/icon-accuracy.svg') }}" alt="Accuracy">
+      </section>
+
+      <section class="card red">
+        <h2 class="card_title">Rapid Diagnosis</h2>
+        <p class="card_content">Get results in seconds, helping doctors to quickly plan treatments and interventions.</p>
+        <img class="card_img" src="{{ url_for('static', filename='icons/icon-speed.svg') }}" alt="Speed">
+      </section>
+
+      <section class="card blue">
+        <h2 class="card_title">Detailed Reports</h2>
+        <p class="card_content">Receive a complete report with identified kidney conditions, severity, and recommended next steps.</p>
+        <img class="card_img" src="{{ url_for('static', filename='icons/icon-insights.svg') }}" alt="Insights">
+      </section>
+
+      <section class="card orange" style="grid-column: 2 / span 1;">
+        <h2 class="card_title">Patient-Friendly</h2>
+        <p class="card_content">Non-invasive and safe, helping patients understand their kidney health with clear AI insights.</p>
+        <img class="card_img" src="{{ url_for('static', filename='icons/icon-eco.svg') }}" alt="Patient Friendly">
+      </section>
+    </div>
+  </div>
+
+ 
+
+</body>
+</html>

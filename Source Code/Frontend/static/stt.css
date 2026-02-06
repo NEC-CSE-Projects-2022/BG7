@@ -1,0 +1,116 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+body { background: #f5f6fa; color: #111; }
+
+/* Navbar */
+.navbar {
+  position: sticky; top: 0; left: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10, 38, 71, 0.95);
+  color: white; padding: 15px 25px;
+  z-index: 1000;
+}
+.logo { font-size: 20px; font-weight: bold; }
+.nav-links { list-style: none; display: flex; gap: 25px; }
+.nav-links a { color: white; text-decoration: none; position: relative; }
+.nav-links a::after {
+  content: ""; position: absolute; width: 0; height: 2px;
+  background: #14b8a6; left: 0; bottom: -5px;
+  transition: 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+.active { color: #14b8a6; }
+
+/* Hamburger Menu (hidden desktop) */
+.menu-toggle { display: none; font-size: 26px; cursor: pointer; }
+
+/* Hero */
+.hero {
+  height: 100vh;
+  background: linear-gradient(to right, #0a2647, #0f172a);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; color: white; padding: 0 20px;
+}
+.hero h1 { font-size: 2.5rem; }
+.hero p { font-size: 1.2rem; margin: 20px 0; }
+.btn {
+  display: inline-block; padding: 12px 25px; border-radius: 25px;
+  background: #14b8a6; color: white; text-decoration: none;
+  transition: 0.3s;
+}
+.btn:hover { background: #0d9488; transform: scale(1.05); }
+
+/* Upload */
+.upload-section { padding: 60px 20px; text-align: center; }
+#drop-area {
+  border: 2px dashed #14b8a6; border-radius: 15px;
+  padding: 40px; margin: 20px auto; width: 90%; max-width: 400px;
+  transition: 0.3s; cursor: pointer;
+}
+#drop-area:hover { background: #e0f7f5; }
+
+/* Description */
+.description { padding: 60px 20px; text-align: center; }
+.cards { 
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px; margin-top: 30px;
+}
+.card {
+  background: white; padding: 20px; border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-8px); }
+
+/* Contact */
+.contact { padding: 60px 20px; text-align: center; }
+.contact-form {
+  display: flex; flex-direction: column; gap: 15px;
+  max-width: 400px; margin: auto;
+}
+.contact-form input, .contact-form textarea {
+  padding: 12px; border: 1px solid #ccc; border-radius: 10px;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  border-color: #14b8a6; outline: none; box-shadow: 0 0 5px #14b8a6;
+}
+
+/* Login */
+.login-bg { background: linear-gradient(135deg, #0a2647, #0f172a); min-height: 100vh; }
+.login-form {
+  background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+  width: 90%; max-width: 320px;
+  margin: 80px auto; padding: 40px; border-radius: 20px;
+  text-align: center; color: white;
+}
+.login-form input {
+  width: 100%; padding: 12px; margin: 10px 0;
+  border: none; border-radius: 10px;
+}
+.login-form button { width: 100%; margin-top: 15px; }
+
+/* Animations */
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes fadeInDown { from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
+
+/* ================= Responsive ================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .nav-links { 
+    position: absolute; top: 65px; left: -100%;
+    flex-direction: column; background: #0a2647;
+    width: 100%; text-align: center; padding: 20px 0;
+    transition: left 0.3s;
+  }
+  .nav-links.show { left: 0; }
+  .menu-toggle { display: block; color: white; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 1rem; }
+  .btn { padding: 10px 20px; font-size: 0.9rem; }
+}

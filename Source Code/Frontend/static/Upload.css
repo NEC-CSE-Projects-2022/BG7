@@ -1,0 +1,169 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+/* Update your CSS file with this logic */
+.pest-container, .batch-wrapper {
+    display: flex;
+    flex-direction: column; /* Force elements to stack vertically */
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    width: 100%;
+}
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0d6efd;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #212529;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #0d6efd;
+}
+
+/* Upload container */
+.pest-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fbff, #eef9f6);
+  padding-top: 80px; /* offset navbar */
+}
+
+.pest-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Titles */
+.pest-title {
+  font-size: 1.6rem;
+  color: #0d6efd;
+  margin-bottom: 0.5rem;
+}
+
+.pest-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Custom file upload */
+.custom-file-upload {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  background: #0d6efd;
+  color: #fff;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.custom-file-upload:hover {
+  background: #0b5ed7;
+}
+
+.custom-file-upload input {
+  display: none;
+}
+
+.file-name {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Image preview */
+.image-preview {
+  margin-top: 1rem;
+}
+
+.image-preview img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  border: 2px solid #e7f1ff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Predict button */
+.predict-btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: linear-gradient(135deg, #0d6efd, #20c997);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.predict-btn:hover {
+  background: linear-gradient(135deg, #0b5ed7, #17a589);
+  transform: translateY(-2px);
+}
+
+/* Prediction result */
+.prediction-result {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+  white-space: pre-line;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

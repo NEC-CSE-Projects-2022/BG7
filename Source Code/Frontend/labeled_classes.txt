@@ -1,0 +1,4 @@
+1 Normal
+2 Tumor
+3 Stone
+4 Cyst

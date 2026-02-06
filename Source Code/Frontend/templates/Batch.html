@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Batch Kidney Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Upload.css') }}">
+    <style>
+        /* Ensures the container stacks elements vertically */
+        .batch-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+
+        .input-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 30px; /* Space before table */
+        }
+
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: white; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td { border: 1px solid #ddd; padding: 15px; text-align: left; }
+        th { background-color: #00509e; color: white; }
+        
+        .row-img { width: 80px; height: 80px; object-fit: cover; border-radius: 5px; }
+        .status-correct { color: green; font-weight: bold; }
+        .status-wrong { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="batch-wrapper">
+        <h1 style="color: #00509e; margin-bottom: 20px;">Batch Kidney Analysis</h1>
+        
+        <div class="input-section">
+            <h3 style="margin-bottom: 20px;">Browse images to start batch processing</h3>
+            <input type="file" id="batchInput" accept="image/*" multiple style="margin-bottom: 20px;">
+            <br>
+            <button class="predict-btn" id="batchPredictBtn">Upload and Predict</button>
+        </div>
+
+        <table id="batchTable" style="display:none;">
+            <thead>
+                <tr>
+                    <th>Selected Image</th>
+                    <th>AI Label</th>
+                    <th>Result Check</th>
+                    <th>Medical Description</th>
+                </tr>
+            </thead>
+            <tbody id="batchTableBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('batchPredictBtn').onclick = async () => {
+            const files = document.getElementById('batchInput').files;
+            if (files.length === 0) return alert("Select images first!");
+
+            const formData = new FormData();
+            Array.from(files).forEach(f => formData.append("images", f));
+
+            const response = await fetch('/predict-batch', { method: 'POST', body: formData });
+            const data = await response.json();
+
+            const table = document.getElementById('batchTable');
+            const tbody = document.getElementById('batchTableBody');
+            table.style.display = "table";
+            tbody.innerHTML = "";
+
+            data.forEach((res, index) => {
+                const isInvalid = res.pred_label === "Unknown";
+                const checkStatus = isInvalid ? "❌ Invalid/Low Conf" : "✅ Valid Scan";
+                const checkClass = isInvalid ? "status-wrong" : "status-correct";
+
+                const row = `
+                    <tr>
+                        <td><img src="${URL.createObjectURL(files[index])}" class="row-img"></td>
+                        <td><b>${res.pred_label}</b></td>
+                        <td class="${checkClass}">${checkStatus}</td>
+                        <td>
+                            <b>Cause:</b> ${res.description.Cause}<br>
+                            <b>Diet:</b> ${res.description.Diet}
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        };
+    </script>
+</body>
+</html>

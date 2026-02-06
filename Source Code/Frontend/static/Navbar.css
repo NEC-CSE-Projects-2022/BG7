@@ -1,0 +1,112 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Pushes logo to the left, and links/buttons to the right */
+    align-items: center; /* Vertically aligns all items */
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #1e3a8a;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+
+/* Nav Links Styling */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #16a34a;
+}
+
+/* Buttons Styling */
+.navbar-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-get-started {
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-get-started:hover {
+    background-color: #2563eb;
+}
+
+/* Hamburger menu styles for mobile */
+.navbar-toggle {
+    display: none; /* Hide on desktop */
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #1e3a8a;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .navbar-toggle {
+        display: block; /* Show hamburger on mobile */
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+
+    .navbar-links,
+    .navbar-buttons {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        display: none; /* Hide by default */
+    }
+
+    .navbar-links.show,
+    .navbar-buttons.show {
+        display: flex; /* Show when 'show' class is added by JS */
+    }
+    
+    .navbar-links li,
+    .navbar-buttons button {
+        margin-bottom: 0.5rem;
+    }
+}
