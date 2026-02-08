@@ -1,5 +1,5 @@
 
-# Team Number – Project Title
+# Team Number – A Deep Learning Model for Automated Kidney Disease Classification Using CT Imaging.
 
 ## Team Info
 - 22471A05B7 — **Karishma** ( [LinkedIn](https://www.linkedin.com/in/karishmapathan115866276/))
@@ -126,9 +126,6 @@ Test set (balanced across classes)
 
 ---
 
-
----
-
 ## EDA & Preprocessing
 
 Explored class distribution to detect imbalance.
@@ -144,9 +141,9 @@ Ensured balanced representation across all kidney disease classes.
 ---
 
 ## Model Training Info
-
+-
 Base Model: YOLOv8
-Optimizer: ULTRALYTICS
+Optimizer: Ultralytics
 Loss Function: CrossEntropyLoss
 Epochs: 20
 Learning Rate: 2e-5
@@ -167,8 +164,8 @@ The model successfully classifies visually similar pests and provides accurate t
 ---
 
 ## Limitations & Future Work
-Currently limited to rice pests
-No real-time mobile deployment yet
+The proposed YOLOv8n-cls framework is limited by dataset size and variability in CT scan quality across different clinical settings, and it currently performs classification without lesion localization or segmentation. Model performance may be affected when deployed on extremely low-end devices or unseen real-world data distributions. Future work includes expanding multi-center datasets, adding localization and explainable AI modules, optimizing edge deployment, and integrating clinical data to enhance diagnostic reliability and applicability.
+ 
 ---
 
 ## Deployment Info
