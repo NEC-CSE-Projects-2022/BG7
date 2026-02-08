@@ -141,7 +141,7 @@ Ensured balanced representation across all kidney disease classes.
 ---
 
 ## Model Training Info
--
+---
 Base Model: YOLOv8
 Optimizer: Ultralytics
 Loss Function: CrossEntropyLoss
