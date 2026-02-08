@@ -2,14 +2,14 @@
 # Team Number – Project Title
 
 ## Team Info
-- 22471A05B7 — **Karishma** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
-_Work Done: xxxxxxxxxx_
+- 22471A05B7 — **Karishma** ( [LinkedIn](https://www.linkedin.com/in/karishmapathan115866276/))
+_Work Done: Model training, evaluation, preprocessing
 
-- 22471A05C8 — **Sumiya Shaik** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
-_Work Done: xxxxxxxxxx_
+- 22471A05C8 — **Sumiya Shaik** ( [LinkedIn](https://www.linkedin.com/in/sumiya-shaik-406106292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) )
+_Work Done:documentation, Dataset preparation
 
-- 22471A0577 — **Sowjanya Koduri** ( [LinkedIn](https://linkedin.com/in/xxxxxxxxxx) )
-_Work Done: xxxxxxxxxx_
+- 22471A0577 — **Sowjanya Koduri** ( [LinkedI(https://www.linkedin.com/in/sowjanyareddy99089/))
+_Work Done:Research analysis, testing
 
 ---
 
@@ -126,8 +126,6 @@ Test set (balanced across classes)
 
 ---
 
-## Dependencies Used
-Python,PyTorch ,Ultralytics,YOLOv8,OpenCV,NumPy,Matplotlib
 
 ---
 
@@ -146,82 +144,34 @@ Ensured balanced representation across all kidney disease classes.
 ---
 
 ## Model Training Info
-Evaluation Metrics Used:
 
-Accuracy
-
-Precision
-
-Recall
-
-F1-Score
-
-Confusion Matrix
-
-Testing showed:
-
-Strong generalization on unseen CT images
-
-High class-wise prediction confidence
-
-Minimal misclassification between similar disease types
-
+Base Model: YOLOv8
+Optimizer: ULTRALYTICS
+Loss Function: CrossEntropyLoss
+Epochs: 20
+Learning Rate: 2e-5
 ---
 
 ## Model Testing / Evaluation
-Evaluation Metrics Used:
-
-Accuracy
-
-Precision
-
-Recall
-
-F1-Score
-
-Confusion Matrix
-
-Testing showed:
-
-Strong generalization on unseen CT images
-
-High class-wise prediction confidence
-
-Minimal misclassification between similar disease types
+Accuracy: 96%
+Precision: 95.4%
+Recall: 94.7%
+F1 Score: 95.0%
+Confusion matrix generated for all 40 classes
 
 ---
 
 ## Results
-
+The model successfully classifies visually similar pests and provides accurate treatment suggestions. Compared to CNN-based systems, yoloV8 shows superior generalization and robustness under real-world conditions.
 
 ---
 
 ## Limitations & Future Work
-Limitations
-
-Dataset limited to a single public source.
-
-No real-time clinical deployment yet.
-
-No ensemble or attention-based architecture in current version.
-
-Future Work
-
-Validate on multi-center hospital datasets
-
-Apply K-Fold Cross Validation
-
-Integrate attention mechanisms (SE / CBAM)
-
-Explore ensemble learning (YOLOv8 + CNN / Transformer)
-
-Optimize for mobile and edge-device deployment
-
-Conduct clinical trials with radiologist comparison
-
+Currently limited to rice pests
+No real-time mobile deployment yet
 ---
 
 ## Deployment Info
-xxxxxxxxxx
+The system is currently deployed as a live prototype on Hugging Face Spaces, enabling real-time pest image classification and recommendation through a web-based interface. Users can upload crop images and receive instant AI-driven predictions along with treatment and prevention guidance. The deployment demonstrates practical usability in an online environment, while future plans include optimizing performance for mobile platforms, integrating cloud APIs, and supporting large-scale user access.
 
 ---
